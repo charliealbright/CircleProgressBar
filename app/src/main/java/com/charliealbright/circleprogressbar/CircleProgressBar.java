@@ -27,8 +27,8 @@ public class CircleProgressBar extends View {
     private int mTrackColor = Color.LTGRAY;
 
     // ALPHAS
-    private float mProgressAlpha = 1.0f;
-    private float mTrackAlpha = 1.0f;
+    private float mProgressAlpha = -1.0f;
+    private float mTrackAlpha = -1.0f;
 
     // STYLES
     private CapStyle mProgressCapStyle = CapStyle.ROUND; // Defaults to Paint.Cap.ROUND
@@ -92,13 +92,19 @@ public class CircleProgressBar extends View {
 
         mTrackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTrackPaint.setColor(mTrackColor);
-        mTrackPaint.setAlpha((int)Math.ceil(mTrackAlpha * 255));
+        if (mTrackAlpha != -1.0f) {
+            // Set custom track alpha
+            mTrackPaint.setAlpha((int) Math.ceil(mTrackAlpha * 255));
+        }
         mTrackPaint.setStyle(Paint.Style.STROKE);
         mTrackPaint.setStrokeWidth(mStrokeWidth);
 
         mProgressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mProgressPaint.setColor(mProgressColor);
-        mProgressPaint.setAlpha((int)Math.ceil(mProgressAlpha * 255));
+        if (mProgressAlpha != -1.0f) {
+            // Set custom progress alpha
+            mProgressPaint.setAlpha((int) Math.ceil(mProgressAlpha * 255));
+        }
         mProgressPaint.setStyle(Paint.Style.STROKE);
         mProgressPaint.setStrokeCap(Paint.Cap.values()[mProgressCapStyle.ordinal()]);
         mProgressPaint.setStrokeWidth(mStrokeWidth);
