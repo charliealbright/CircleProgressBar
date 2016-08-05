@@ -10,15 +10,15 @@
 
     <com.charliealbright.circleprogressbar.CircleProgressBar
         android:id="@+id/circleprogressbar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
-        app:progress="1050"
+        app:progress="500"
         app:max="1000"
         app:progressColor="@color/colorPrimary"
         app:progressCapStyle="round"
         app:trackColor="@color/colorAccent"
-        app:trackWidth="10dp"/>
+        app:trackWidth="5dp"/>
 
     <SeekBar
         android:id="@+id/seekbar"

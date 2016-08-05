@@ -70,6 +70,13 @@ public class CircleProgressBar extends View {
             mMin = typedArray.getInt(R.styleable.CircleProgressBar_min, mMin);
             mMax = typedArray.getInt(R.styleable.CircleProgressBar_max, mMax);
 
+            if (mProgress > mMax) {
+                throw new ProgressOutOfBoundsException("The progress can not be set higher than the max value. Did you forget to set a custom max value?");
+            }
+            if (mProgress < mMin) {
+                throw new ProgressOutOfBoundsException("The progress can not be set lower than the min value. Did you forget to set a custom min value?");
+            }
+
             mStrokeWidth = typedArray.getDimension(R.styleable.CircleProgressBar_trackWidth, mStrokeWidth);
 
             mProgressColor = typedArray.getInt(R.styleable.CircleProgressBar_progressColor, mProgressColor);
@@ -118,7 +125,13 @@ public class CircleProgressBar extends View {
     }
 
     public void setProgress(int progress) {
-        this.mProgress = progress;
-        invalidate();
+        if (progress > mMax) {
+            throw new ProgressOutOfBoundsException("The progress can not be set higher than the max value. Did you forget to set a custom max value?");
+        } else if (progress < mMin) {
+            throw new ProgressOutOfBoundsException("The progress can not be set lower than the min value. Did you forget to set a custom min value?");
+        } else {
+            this.mProgress = progress;
+            invalidate();
+        }
     }
 }
