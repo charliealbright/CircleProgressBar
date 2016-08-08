@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.View;
 
 /**
@@ -14,16 +16,19 @@ import android.view.View;
  */
 public class CircleProgressBar extends View {
 
+    private static final float DEFAULT_TRACK_WIDTH_DP = 5f;
+
     // VALUES
     private int mProgress = 0;
     private int mMin = 0;
     private int mMax = 100;
 
     // DIMENS
-    private float mStrokeWidth = 4f;
+    private DisplayMetrics mDisplayMetrics;
+    private float mStrokeWidth;
 
     // COLORS
-    private int mProgressColor = Color.DKGRAY;
+    private int mProgressColor;
     private int mTrackColor = Color.LTGRAY;
 
     // ALPHAS
@@ -60,6 +65,8 @@ public class CircleProgressBar extends View {
 
     private void setupStyle(Context context, AttributeSet attributeSet) {
         mRectF = new RectF();
+        mDisplayMetrics = context.getResources().getDisplayMetrics();
+
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(
                 attributeSet,
                 R.styleable.CircleProgressBar,
@@ -77,9 +84,9 @@ public class CircleProgressBar extends View {
                 throw new ProgressOutOfBoundsException("The progress can not be set lower than the min value. Did you forget to set a custom min value?");
             }
 
-            mStrokeWidth = typedArray.getDimension(R.styleable.CircleProgressBar_trackWidth, mStrokeWidth);
+            mStrokeWidth = typedArray.getDimension(R.styleable.CircleProgressBar_trackWidth, dpToPx(DEFAULT_TRACK_WIDTH_DP));
 
-            mProgressColor = typedArray.getInt(R.styleable.CircleProgressBar_progressColor, mProgressColor);
+            mProgressColor = typedArray.getInt(R.styleable.CircleProgressBar_progressColor, getResources().getColor(R.color.colorAccent));
             mTrackColor = typedArray.getInt(R.styleable.CircleProgressBar_trackColor, mTrackColor);
 
             mProgressAlpha = typedArray.getFloat(R.styleable.CircleProgressBar_progressAlpha, mProgressAlpha);
@@ -139,5 +146,43 @@ public class CircleProgressBar extends View {
             this.mProgress = progress;
             invalidate();
         }
+    }
+
+    public int getProgress() {
+        return mProgress;
+    }
+
+    public void setMin(int min) {
+        mMin = min;
+        invalidate();
+    }
+
+    public int getMin() {
+        return mMin;
+    }
+
+    public void setMax(int max) {
+        mMax = max;
+        invalidate();
+    }
+
+    public int getMax() {
+        return mMax;
+    }
+
+    public void setTrackWidth(float widthInDips) {
+        mStrokeWidth = dpToPx(widthInDips);
+    }
+
+    public float getTrackWidth() {
+        return pxToDp(mStrokeWidth);
+    }
+
+    private float dpToPx(float dp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, mDisplayMetrics);
+    }
+
+    private float pxToDp(float px) {
+        return (float)Math.ceil(px / mDisplayMetrics.density);
     }
 }
