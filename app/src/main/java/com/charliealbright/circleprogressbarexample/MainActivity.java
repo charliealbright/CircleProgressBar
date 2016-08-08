@@ -1,8 +1,10 @@
-package com.charliealbright.circleprogressbar;
+package com.charliealbright.circleprogressbarexample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.SeekBar;
+
+import com.charliealbright.circleprogressbar.CircleProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mCircleProgressBar = (CircleProgressBar)findViewById(R.id.circleprogressbar);
+
         mSeekBar = (SeekBar)findViewById(R.id.seekbar);
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

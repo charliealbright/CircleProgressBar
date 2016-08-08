@@ -28,7 +28,7 @@ public class CircleProgressBar extends View {
     private float mStrokeWidth;
 
     // COLORS
-    private int mProgressColor;
+    private int mProgressColor = Color.DKGRAY;
     private int mTrackColor = Color.LTGRAY;
 
     // ALPHAS
@@ -86,7 +86,7 @@ public class CircleProgressBar extends View {
 
             mStrokeWidth = typedArray.getDimension(R.styleable.CircleProgressBar_trackWidth, dpToPx(DEFAULT_TRACK_WIDTH_DP));
 
-            mProgressColor = typedArray.getInt(R.styleable.CircleProgressBar_progressColor, getResources().getColor(R.color.colorAccent));
+            mProgressColor = typedArray.getInt(R.styleable.CircleProgressBar_progressColor, mProgressColor);
             mTrackColor = typedArray.getInt(R.styleable.CircleProgressBar_trackColor, mTrackColor);
 
             mProgressAlpha = typedArray.getFloat(R.styleable.CircleProgressBar_progressAlpha, mProgressAlpha);
