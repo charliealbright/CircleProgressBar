@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'circleprogressbar'
+
+    publishedGroupId = 'com.charliealbright'
+    libraryName = 'CircleProgressBar'
+    artifact = 'circleprogressbar'
+
+    libraryDescription = ''
+
+    siteUrl = 'https://github.com/charliealbright/CircleProgressBar'
+    gitUrl = 'https://github.com/charliealbright/CircleProgressBar.git'
+
+    libraryVersion = '1.0-alpha'
+
+    developerId = 'charliealbright'
+    developerName = 'Charlie Albright'
+    developerEmail = 'albrightc25@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.2"
@@ -23,3 +47,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.1.1'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
