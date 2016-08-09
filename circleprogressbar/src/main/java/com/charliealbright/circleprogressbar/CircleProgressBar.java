@@ -45,7 +45,7 @@ public class CircleProgressBar extends View {
     private Paint mProgressPaint;
 
     public enum CapStyle {
-        BUTT,
+        FLAT,
         ROUND,
     }
 
