@@ -13,7 +13,9 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
-        app:progress="50"/>
+        app:progressColor="@color/colorPrimary"
+        app:progress="500"
+        app:max="1000"/>
 
     <SeekBar
         android:id="@+id/seekbar"
@@ -23,7 +25,18 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_below="@id/circleprogressbar"
-        android:max="100"
-        android:progress="50"/>
+        android:max="1000"
+        android:progress="500"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/seekbar"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorAccent"
+        android:textColor="@android:color/white"
+        android:text="Animate"/>
 
 </RelativeLayout>

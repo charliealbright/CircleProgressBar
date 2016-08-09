@@ -97,6 +97,10 @@ public class CircleProgressBar extends View {
             typedArray.recycle();
         }
 
+        refreshStyle();
+    }
+
+    private void refreshStyle() {
         mTrackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTrackPaint.setColor(mTrackColor);
         if (mTrackAlpha != -1.0f) {
@@ -131,11 +135,17 @@ public class CircleProgressBar extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        refreshStyle();
+
         canvas.drawOval(mRectF, mTrackPaint);
         float angle = 360 * mProgress / mMax;
         canvas.drawArc(mRectF, mStartAngle, angle, false, mProgressPaint);
 
     }
+
+    // #########################
+    // ## GETTERS AND SETTERS ##
+    // #########################
 
     public void setProgress(int progress) {
         if (progress > mMax) {
@@ -172,11 +182,63 @@ public class CircleProgressBar extends View {
 
     public void setTrackWidth(float widthInDips) {
         mStrokeWidth = dpToPx(widthInDips);
+        invalidate();
     }
 
     public float getTrackWidth() {
         return pxToDp(mStrokeWidth);
     }
+
+    public void setProgressColor(int color) {
+        mProgressColor = color;
+        invalidate();
+    }
+
+    public int getProgressColor() {
+        return mProgressColor;
+    }
+
+    public void setTrackColor(int color) {
+        mTrackColor = color;
+        invalidate();
+    }
+
+    public int getTrackColor() {
+        return mTrackColor;
+    }
+
+    public void setProgressAlpha(float alpha) {
+        // TODO: validation of input (0.0 - 1.0 ONLY)
+        mProgressAlpha = alpha;
+        invalidate();
+    }
+
+    public float getProgressAlpha() {
+        return mProgressAlpha;
+    }
+
+    public void setTrackAlpha(float alpha) {
+        // TODO: validation of input (0.0 - 1.0 ONLY)
+        mTrackAlpha = alpha;
+        invalidate();
+    }
+
+    public float getTrackAlpha() {
+        return mTrackAlpha;
+    }
+
+    public void setProgressCapStyle(CapStyle capStyle) {
+        mProgressCapStyle = capStyle;
+        invalidate();
+    }
+
+    public CapStyle getProgressCapStyle() {
+        return mProgressCapStyle;
+    }
+
+    // #######################
+    // ## UTILITY FUNCTIONS ##
+    // #######################
 
     private float dpToPx(float dp) {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, mDisplayMetrics);
