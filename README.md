@@ -4,4 +4,12 @@
 [![GitHub watchers](https://img.shields.io/github/watchers/charliealbright/circleprogressbar.svg?style=social&label=Watch&maxAge=2592000)]()
 
 # CircleProgressBar
-A custom widget for android that allows the user to create a circular progress bar.
+A custom widget for Android that is used for indicating progress in a circular fashion.
+
+<br>
+## Usage
+To incorporate CircleProgressBar into your Android Studio project, simply add this line to your app's `build.gradle` file:
+
+```gradle
+compile 'com.charliealbright:circleprogressbar:1.0-alpha'
+```
