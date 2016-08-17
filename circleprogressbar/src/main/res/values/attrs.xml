@@ -22,5 +22,11 @@
             <enum name="flat" value="0"/>
             <enum name="round" value="1"/>
         </attr>
+        <attr name="startingPosition" format="enum">
+            <enum name="top" value="270"/>
+            <enum name="bottom" value="90"/>
+            <enum name="left" value="180"/>
+            <enum name="right" value="0"/>
+        </attr>
     </declare-styleable>
 </resources>

@@ -37,6 +37,7 @@ public class CircleProgressBar extends View {
 
     // STYLES
     private CapStyle mProgressCapStyle = CapStyle.ROUND; // Defaults to Paint.Cap.ROUND
+    private StartPosition mStartPosition = StartPosition.TOP; // Defaults to start at top position
 
     // Local fields
     private int mStartAngle = -90; // Vertical
@@ -46,7 +47,24 @@ public class CircleProgressBar extends View {
 
     public enum CapStyle {
         FLAT,
-        ROUND,
+        ROUND
+    }
+
+    public enum StartPosition {
+        TOP(270),
+        BOTTOM(90),
+        LEFT(180),
+        RIGHT(0);
+
+        private int value;
+
+        StartPosition(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 
     public CircleProgressBar(Context context) {
@@ -97,6 +115,13 @@ public class CircleProgressBar extends View {
             // TODO: alpha validation (0.0 - 1.0 ONLY)
 
             mProgressCapStyle = CapStyle.values()[typedArray.getInt(R.styleable.CircleProgressBar_progressCapStyle, mProgressCapStyle.ordinal())];
+            int startAngle = typedArray.getInt(R.styleable.CircleProgressBar_startingPosition, mStartPosition.getValue());
+            for (StartPosition startPosition : StartPosition.values()) {
+                if (startAngle == startPosition.getValue()) {
+                    mStartPosition = startPosition;
+                }
+            }
+
         } finally {
             typedArray.recycle();
         }
@@ -143,7 +168,7 @@ public class CircleProgressBar extends View {
 
         canvas.drawOval(mRectF, mTrackPaint);
         float angle = 360 * mProgress / mMax;
-        canvas.drawArc(mRectF, mStartAngle, angle, false, mProgressPaint);
+        canvas.drawArc(mRectF, mStartPosition.getValue(), angle, false, mProgressPaint);
 
     }
 
@@ -240,6 +265,14 @@ public class CircleProgressBar extends View {
 
     public CapStyle getProgressCapStyle() {
         return mProgressCapStyle;
+    }
+
+    public void setStartPosition(StartPosition startPosition) {
+        mStartPosition = startPosition;
+    }
+
+    public StartPosition getStartPosition() {
+        return mStartPosition;
     }
 
     // #######################
