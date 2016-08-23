@@ -98,10 +98,10 @@ public class CircleProgressBar extends View {
             // TODO: min/max validation
 
             if (mProgress > mMax) {
-                throw new ProgressOutOfBoundsException("The progress can not be set higher than the max value. Did you forget to set a custom max value?");
+                throw new OutOfBoundsException("The progress can not be set higher than the max value. Did you forget to set a custom max value?");
             }
             if (mProgress < mMin) {
-                throw new ProgressOutOfBoundsException("The progress can not be set lower than the min value. Did you forget to set a custom min value?");
+                throw new OutOfBoundsException("The progress can not be set lower than the min value. Did you forget to set a custom min value?");
             }
 
             mStrokeWidth = typedArray.getDimension(R.styleable.CircleProgressBar_trackWidth, dpToPx(DEFAULT_TRACK_WIDTH_DP));
@@ -113,11 +113,11 @@ public class CircleProgressBar extends View {
             mTrackAlpha = typedArray.getFloat(R.styleable.CircleProgressBar_trackAlpha, mTrackAlpha);
 
             if (!(mProgressAlpha == -1.0f || (mProgressAlpha >= 0.0f && mProgressAlpha <= 1.0f))) {
-                throw new AlphaOutOfBoundsException("The progress alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
+                throw new OutOfBoundsException("The progress alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
             }
 
             if (!(mTrackAlpha == -1.0f || (mTrackAlpha >= 0.0f && mTrackAlpha <= 1.0f))) {
-                throw new AlphaOutOfBoundsException("The track alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
+                throw new OutOfBoundsException("The track alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
             }
 
             mProgressCapStyle = CapStyle.values()[typedArray.getInt(R.styleable.CircleProgressBar_progressCapStyle, mProgressCapStyle.ordinal())];
@@ -184,9 +184,9 @@ public class CircleProgressBar extends View {
 
     public void setProgress(int progress) {
         if (progress > mMax) {
-            throw new ProgressOutOfBoundsException("The progress can not be set higher than the max value. Did you forget to set a custom max value?");
+            throw new OutOfBoundsException("The progress can not be set higher than the max value. Did you forget to set a custom max value?");
         } else if (progress < mMin) {
-            throw new ProgressOutOfBoundsException("The progress can not be set lower than the min value. Did you forget to set a custom min value?");
+            throw new OutOfBoundsException("The progress can not be set lower than the min value. Did you forget to set a custom min value?");
         } else {
             this.mProgress = progress;
             invalidate();
@@ -249,7 +249,7 @@ public class CircleProgressBar extends View {
             mProgressAlpha = alpha;
             invalidate();
         } else {
-            throw new AlphaOutOfBoundsException("The progress alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
+            throw new OutOfBoundsException("The progress alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
         }
     }
 
@@ -262,7 +262,7 @@ public class CircleProgressBar extends View {
             mTrackAlpha = alpha;
             invalidate();
         } else {
-            throw new AlphaOutOfBoundsException("The track alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
+            throw new OutOfBoundsException("The track alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
         }
     }
 
