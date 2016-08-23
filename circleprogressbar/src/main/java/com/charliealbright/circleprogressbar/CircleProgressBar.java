@@ -112,7 +112,13 @@ public class CircleProgressBar extends View {
             mProgressAlpha = typedArray.getFloat(R.styleable.CircleProgressBar_progressAlpha, mProgressAlpha);
             mTrackAlpha = typedArray.getFloat(R.styleable.CircleProgressBar_trackAlpha, mTrackAlpha);
 
-            // TODO: alpha validation (0.0 - 1.0 ONLY)
+            if (!(mProgressAlpha == -1.0f || (mProgressAlpha >= 0.0f && mProgressAlpha <= 1.0f))) {
+                throw new AlphaOutOfBoundsException("The progress alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
+            }
+
+            if (!(mTrackAlpha == -1.0f || (mTrackAlpha >= 0.0f && mTrackAlpha <= 1.0f))) {
+                throw new AlphaOutOfBoundsException("The track alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
+            }
 
             mProgressCapStyle = CapStyle.values()[typedArray.getInt(R.styleable.CircleProgressBar_progressCapStyle, mProgressCapStyle.ordinal())];
             int startAngle = typedArray.getInt(R.styleable.CircleProgressBar_startingPosition, mStartPosition.getValue());
@@ -239,9 +245,12 @@ public class CircleProgressBar extends View {
     }
 
     public void setProgressAlpha(float alpha) {
-        // TODO: validation of input (0.0 - 1.0 ONLY)
-        mProgressAlpha = alpha;
-        invalidate();
+        if (alpha >= 0.0f && alpha <= 1.0f) {
+            mProgressAlpha = alpha;
+            invalidate();
+        } else {
+            throw new AlphaOutOfBoundsException("The progress alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
+        }
     }
 
     public float getProgressAlpha() {
@@ -249,9 +258,12 @@ public class CircleProgressBar extends View {
     }
 
     public void setTrackAlpha(float alpha) {
-        // TODO: validation of input (0.0 - 1.0 ONLY)
-        mTrackAlpha = alpha;
-        invalidate();
+        if (alpha >= 0.0f && alpha <= 1.0f) {
+            mTrackAlpha = alpha;
+            invalidate();
+        } else {
+            throw new AlphaOutOfBoundsException("The track alpha has been set to an unsupported value. Please ensure the alpha is between 0.0 and 1.0.");
+        }
     }
 
     public float getTrackAlpha() {
