@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mCircleProgressBar = (CircleProgressBar)findViewById(R.id.circleprogressbar);
+        mCircleProgressBar.setMin(1000);
+        mCircleProgressBar.setMax(0);
 
         mObjectAnimator = new ObjectAnimator();
         mObjectAnimator.setInterpolator(new DecelerateInterpolator());
