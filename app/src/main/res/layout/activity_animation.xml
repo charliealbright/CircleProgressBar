@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     android:gravity="center"
-    tools:context="com.charliealbright.circleprogressbarexample.MainActivity">
+    tools:context="com.charliealbright.circleprogressbarexample.AnimationActivity">
 
     <com.charliealbright.circleprogressbar.CircleProgressBar
-        android:id="@+id/circleprogressbar"
+        android:id="@+id/animation_circleprogressbar"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         app:progressColor="@color/colorPrimary"
-        app:progress="500"
+        app:progress="0"
         app:max="1000"/>
 
-    <android.support.v7.widget.AppCompatSeekBar
-        android:id="@+id/seekbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_below="@id/circleprogressbar"
-        android:max="1000"
-        android:progress="500"/>
-
-    <TextSwitcher
-        android:id="@+id/text_view"
+    <Button
+        android:id="@+id/animation_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/seekbar"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/animation_circleprogressbar"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_default"
+        android:textColor="@android:color/white"
+        android:text="Animate!"/>
+
+    <TextSwitcher
+        android:id="@+id/animation_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/animation_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:text="@string/screen1_text"/>
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
 
     <Button
-        android:id="@+id/next_button"
+        android:id="@+id/animation_nextbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/text_view"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/animation_textview"
         android:layout_centerHorizontal="true"
         android:background="@drawable/button_default"
         android:enabled="false"

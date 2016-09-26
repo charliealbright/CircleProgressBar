@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CircleProgressBar</string>
+
+    <string name="screen1_text">Slide the SeekBar to change how full the CircleProgressBar becomes.</string>
+    <string name="screen2_text">Press "Animate!" to see an example of animating the CircleProgressBar.</string>
+
+    <string name="confirmation">Great! Click \"Next\" to see another example.</string>
 </resources>

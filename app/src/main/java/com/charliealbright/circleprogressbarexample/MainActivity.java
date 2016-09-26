@@ -1,22 +1,27 @@
 package com.charliealbright.circleprogressbarexample;
 
-import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatSeekBar;
+import android.util.TypedValue;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextSwitcher;
+import android.widget.TextView;
 
 import com.charliealbright.circleprogressbar.CircleProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
     private CircleProgressBar mCircleProgressBar;
-    private SeekBar mSeekBar;
-    private Button mButton;
+    private AppCompatSeekBar mSeekBar;
+    private TextSwitcher mTextSwitcher;
+    private Button mNextButton;
 
-    private ObjectAnimator mObjectAnimator;
+    private boolean userActionTaken = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,19 +32,10 @@ public class MainActivity extends AppCompatActivity {
         mCircleProgressBar.setMin(1000);
         mCircleProgressBar.setMax(0);
 
-        mObjectAnimator = new ObjectAnimator();
-        mObjectAnimator.setInterpolator(new DecelerateInterpolator());
-        mObjectAnimator.setTarget(mCircleProgressBar);
-        mObjectAnimator.setPropertyName("progress");
-        mObjectAnimator.setDuration(3000);
-
-        mSeekBar = (SeekBar)findViewById(R.id.seekbar);
+        mSeekBar = (AppCompatSeekBar)findViewById(R.id.seekbar);
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                if (mObjectAnimator.isRunning()) {
-                    mObjectAnimator.cancel();
-                }
                 mCircleProgressBar.setProgress(i);
             }
 
@@ -50,19 +46,37 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-
-        mButton = (Button)findViewById(R.id.button);
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!mObjectAnimator.isRunning()) {
-                    mObjectAnimator.setIntValues(mCircleProgressBar.getProgress(), 800);
-                    mObjectAnimator.start();
+                if (userActionTaken == false) {
+                    mTextSwitcher.setText(getText(R.string.confirmation));
+                    mNextButton.setEnabled(true);
+                    userActionTaken = true;
                 }
             }
         });
+
+        mTextSwitcher = (TextSwitcher)findViewById(R.id.text_view);
+        mTextSwitcher.setInAnimation(this, android.R.anim.fade_in);
+        mTextSwitcher.setOutAnimation(this, android.R.anim.fade_out);
+        mTextSwitcher.addView(makeTextView(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        mTextSwitcher.addView(makeTextView(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        mTextSwitcher.setText(getText(R.string.screen1_text));
+
+        mNextButton = (Button)findViewById(R.id.next_button);
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AnimationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        getSharedPreferences("fileName", MODE_PRIVATE).edit().clear().apply();
+    }
+
+    private TextView makeTextView() {
+        TextView textView = new TextView(this);
+        textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16);
+        return textView;
     }
 }
