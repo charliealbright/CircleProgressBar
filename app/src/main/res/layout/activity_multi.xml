@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/darkGrey"
+    tools:context="com.charliealbright.circleprogressbarexample.MultiActivity">
+
+    <LinearLayout
+        android:id="@+id/multi_circleprogressbar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <com.charliealbright.circleprogressbar.CircleProgressBar
+            android:id="@+id/multi_circleprogressbar_carb"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:trackAlpha="0.5"
+            app:progressColor="@color/green"
+            app:progress="780"
+            app:max="1000"/>
+        <com.charliealbright.circleprogressbar.CircleProgressBar
+            android:id="@+id/multi_circleprogressbar_protein"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:trackAlpha="0.5"
+            app:progressColor="@color/blue"
+            app:progress="550"
+            app:max="1000"/>
+
+    </LinearLayout>
+
+    <com.charliealbright.circleprogressbar.CircleProgressBar
+        android:id="@+id/multi_circleprogressbar_fat"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/multi_circleprogressbar_container"
+        android:layout_marginTop="-21dp"
+        android:layout_centerHorizontal="true"
+        app:trackAlpha="0.5"
+        app:progressColor="@color/yellow"
+        app:progress="870"
+        app:max="1000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/multi_circleprogressbar_container"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/multi_textview_carb_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:text="Carbs"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/multi_textview_protein_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:text="Proteins"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignTop="@id/multi_circleprogressbar_fat"
+        android:layout_alignStart="@id/multi_circleprogressbar_fat">
+
+        <TextView
+            android:id="@+id/multi_textview_fat_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/yellow"
+            android:text="Fats"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

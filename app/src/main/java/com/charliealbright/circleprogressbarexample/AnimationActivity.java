@@ -1,6 +1,7 @@
 package com.charliealbright.circleprogressbarexample;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -56,7 +57,8 @@ public class AnimationActivity extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Make 3rd example?
+                Intent intent = new Intent(getApplicationContext(), MultiActivity.class);
+                startActivity(intent);
             }
         });
 
