@@ -24,7 +24,6 @@
             android:layout_height="150dp"
             app:trackAlpha="0.5"
             app:progressColor="@color/green"
-            app:progress="780"
             app:max="1000"/>
         <com.charliealbright.circleprogressbar.CircleProgressBar
             android:id="@+id/multi_circleprogressbar_protein"
@@ -32,7 +31,6 @@
             android:layout_height="150dp"
             app:trackAlpha="0.5"
             app:progressColor="@color/blue"
-            app:progress="550"
             app:max="1000"/>
 
     </LinearLayout>
@@ -46,7 +44,6 @@
         android:layout_centerHorizontal="true"
         app:trackAlpha="0.5"
         app:progressColor="@color/yellow"
-        app:progress="870"
         app:max="1000"/>
 
     <LinearLayout
@@ -67,7 +64,16 @@
                 android:layout_marginTop="16dp"
                 android:textStyle="bold"
                 android:textColor="@color/green"
-                android:text="Carbs"/>
+                android:text="@string/multi_carbs_label"/>
+
+            <TextView
+                android:id="@+id/multi_textview_carb_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="30sp"
+                android:textColor="@color/green"
+                android:text="@string/multi_carbs_value"/>
 
         </RelativeLayout>
 
@@ -84,7 +90,16 @@
                 android:layout_marginTop="16dp"
                 android:textStyle="bold"
                 android:textColor="@color/blue"
-                android:text="Proteins"/>
+                android:text="@string/multi_proteins_label"/>
+
+            <TextView
+                android:id="@+id/multi_textview_protein_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="30sp"
+                android:textColor="@color/blue"
+                android:text="@string/multi_proteins_value"/>
 
         </RelativeLayout>
 
@@ -104,9 +119,58 @@
             android:layout_marginTop="16dp"
             android:textStyle="bold"
             android:textColor="@color/yellow"
-            android:text="Fats"/>
+            android:text="@string/multi_fats_label"/>
 
+        <TextView
+            android:id="@+id/multi_textview_fat_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="30sp"
+            android:textColor="@color/yellow"
+            android:text="@string/multi_fats_value"/>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/multi_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/multi_circleprogressbar_fat"
+        android:layout_marginTop="32dp"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textColor="@android:color/primary_text_dark"
+        android:text="@string/screen3_text"/>
+
+    <LinearLayout
+        android:id="@+id/multi_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_below="@id/multi_text_view"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/multi_button_github"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:text="@string/multi_button_github" />
+
+        <Button
+            android:id="@+id/multi_button_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:text="@string/multi_button_exit" />
+
+    </LinearLayout>
 
 </RelativeLayout>

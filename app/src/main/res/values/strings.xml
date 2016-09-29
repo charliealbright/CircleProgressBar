@@ -3,6 +3,15 @@
 
     <string name="screen1_text">Slide the SeekBar to change how full the CircleProgressBar becomes.</string>
     <string name="screen2_text">Press "Animate!" to see an example of animating the CircleProgressBar.</string>
+    <string name="screen3_text">CircleProgressBar can be used in many ways to create unique infographics like the one displayed here. Please visit the GitHub page to start using CircleProgressBar in your own projects!</string>
 
     <string name="confirmation">Great! Click \"Next\" to see another example.</string>
+    <string name="multi_carbs_label">Carbs</string>
+    <string name="multi_carbs_value">137g</string>
+    <string name="multi_proteins_label">Proteins</string>
+    <string name="multi_proteins_value">82g</string>
+    <string name="multi_fats_label">Fats</string>
+    <string name="multi_fats_value">55g</string>
+    <string name="multi_button_github">GitHub</string>
+    <string name="multi_button_exit">Exit App</string>
 </resources>
